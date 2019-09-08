@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel="manifest" href="/manifest.json">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Memo,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="红X菌のZone" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="你并不需要知道所有的这些东西， 但是如果你还在很沉重地在使用 Linux 的话，这些东西都值得你看一看。  注：如果你想知道下面涉及到的命令的更多的用法，你一定要 man 一点。 对于一些命令，你可以需要先 yum 或 apt-get 来安装一下，如果有什么问题，别忘了 Google。 如果你要 Baidu 的话， 我仅代表这个地球上所有的生物包括微生物甚至细菌病毒和小强 BS 你到宇宙毁灭. 基">
+<meta name="keywords" content="Memo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="速成课：linux漫游指南">
+<meta property="og:url" content="https://m12r3dx.github.io/2019/03/29/linux/index.html">
+<meta property="og:site_name" content="红X菌のZone">
+<meta property="og:description" content="你并不需要知道所有的这些东西， 但是如果你还在很沉重地在使用 Linux 的话，这些东西都值得你看一看。  注：如果你想知道下面涉及到的命令的更多的用法，你一定要 man 一点。 对于一些命令，你可以需要先 yum 或 apt-get 来安装一下，如果有什么问题，别忘了 Google。 如果你要 Baidu 的话， 我仅代表这个地球上所有的生物包括微生物甚至细菌病毒和小强 BS 你到宇宙毁灭. 基">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-17T09:24:42.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="速成课：linux漫游指南">
+<meta name="twitter:description" content="你并不需要知道所有的这些东西， 但是如果你还在很沉重地在使用 Linux 的话，这些东西都值得你看一看。  注：如果你想知道下面涉及到的命令的更多的用法，你一定要 man 一点。 对于一些命令，你可以需要先 yum 或 apt-get 来安装一下，如果有什么问题，别忘了 Google。 如果你要 Baidu 的话， 我仅代表这个地球上所有的生物包括微生物甚至细菌病毒和小强 BS 你到宇宙毁灭. 基">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://m12r3dx.github.io/2019/03/29/linux/">
+
+
+
+
+
+  <title>速成课：linux漫游指南 | 红X菌のZone</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红X菌のZone</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://m12r3dx.github.io/2019/03/29/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kong Jerry">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红X菌のZone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">速成课：linux漫游指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T00:58:28+08:00">
+                29/03/2019
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>你并不需要知道所有的这些东西，</p>
+<p>但是如果你还在很沉重地在使用 Linux 的话，这些东西都值得你看一看。 </p>
+<p>注：如果你想知道下面涉及到的命令的更多的用法，你一定要 man 一点。</p>
+<p>对于一些命令，你可以需要先 yum 或 apt-get 来安装一下，如果有什么问题，别忘了 Google。</p>
+<p>如果你要 Baidu 的话，</p>
+<p>我仅代表这个地球上所有的生物包括微生物甚至细菌病毒和小强 BS 你到宇宙毁灭.</p>
+<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><ul>
+<li><p><strong>学习 <a href="http://www.quora.com/Bash-shell" target="_blank" rel="noopener">Bash</a> </strong>。你可以 man bash 来看看 bash 的东西，并不复杂也并不长。你用别的 shell 也行，但是 bash 是很强大的并且也是系统默认的。（学习 zsh 或 tsch 只会让你在很多情况下受到限制）</p>
+</li>
+<li><p><strong>学习 vim</strong> 。在 Linux 下，基本没有什么可与之竞争的编<del>译</del>辑器（就算你是一个 Emacs 或 Eclipse 的重度用户）。你可以看看《<a href="https://m12r3dx.github.io/2018/11/12/vim/" title="简明 Vim 练级攻略">简明 vim 攻略</a>》和 《<a href="https://coolshell.cn/articles/7166.html" title="游戏：VIM大冒险" target="_blank" rel="noopener">Vim 的冒险游戏</a>》以及《<a href="https://coolshell.cn/articles/5479.html" title="给程序员的VIM速查卡" target="_blank" rel="noopener">给程序员的 Vim 速查卡</a>》还有《<a href="https://coolshell.cn/articles/894.html" title="将vim变得简单:如何在vim中得到你最喜爱的IDE特性" target="_blank" rel="noopener">把 Vim 变成一个编程的 IDE</a>》等等。</p>
+</li>
+<li><p><strong>了解 ssh</strong>。明白不需要口令的用户认证（通过 ssh-agent, ssh-add），学会用 ssh 翻墙，用 scp 而不是 ftp 传文件，等等。你知道吗？scp 远端的时候，你可以按 tab 键来查看远端的目录和文件（当然，需要无口令的用户认证），这都是 bash 的功劳。</p>
+</li>
+<li><p><strong>熟悉 bash 的作业管理</strong>，如： &amp;, Ctrl-Z, Ctrl-C, jobs, fg, bg, kill, 等等。当然，你也要知道 Ctrl+\（SIGQUIT）和 Ctrl+C （SIGINT）的区别。</p>
+</li>
+<li><p><strong>简单的文件管理</strong> ： ls 和 ls -l (你最好知道 “ls -l” 的每一列的意思), less, head, tail 和 tail -f, ln 和 ln -s (你知道明白 hard link 和 soft link 的不同和优缺点), chown, chmod, du (如果你想看看磁盘的大小 du -sk *), df, mount。当然，原作者忘了 find 命令。</p>
+</li>
+<li><p><strong>基础的网络管理</strong>： ip 或 ifconfig, dig。当然，原作者还忘了如 netstat, ping, traceroute, 等</p>
+</li>
+<li><p><strong>理解正则表达式</strong>，还有 grep/egrep 的各种选项。比如： -o, -A, 和 -B 这些选项是很值得了解的。</p>
+</li>
+<li><p><strong>学习使用 apt-get 和 yum 来查找和安装软件</strong>（前者的经典分发包是 Ubuntu，后者的经典分发包是 Redhat），我还建议你试着从源码编译安装软件。</p>
+</li>
+</ul>
+<h4 id="日常"><a href="#日常" class="headerlink" title="日常"></a>日常</h4><ul>
+<li><p>在 bash 里，使用 Ctrl-R 而不是上下光标键来查找历史命令。</p>
+</li>
+<li><p>在 bash 里，使用 Ctrl-W 来删除最后一个单词，使用 Ctrl-U 来删除一行。请 man bash 后查找 Readline Key Bindings 一节来看看 bash 的默认热键，比如：Alt-. 把上一次命令的最后一个参数打出来，而 Alt-* 则列出你可以输入的命令。</p>
+</li>
+<li><p>回到上一次的工作目录： cd –  （回到 home 是 cd ~）</p>
+</li>
+<li><p>使用 xargs。这是一个很强大的命令。你可以使用 - L 来限定有多少个命令，也可以用 - P 来指定并行的进程数。如果你不知道你的命令会变成什么样，你可以使用 xargs echo 来看看会是什么样。当然， -I{} 也很好用。示例：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find . -name \*.py | xargs grep some_function </span><br><span class="line">cat hosts |  xargs  -I&#123;&#125;  ssh  root@&#123;&#125;  hostname</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>pstree -p 可以帮你显示进程树。（读过耗子叔那篇《<a href="https://coolshell.cn/articles/7965.html" title="一个fork的面试题" target="_blank" rel="noopener">一个 fork 的面试题</a>》的人应该都不陌生）</p>
+</li>
+<li><p>使用 pgrep 和 pkill 来找到或是 kill 某个名字的进程。 (-f 选项很有用).</p>
+</li>
+<li><p>了解可以发给进程的信号。例如：要挂起一个进程，使用 kill -STOP [pid]. 使用 man 7 signal 来查看各种信号，使用 kill -l 来查看数字和信号的对应表</p>
+</li>
+<li><p>使用 nohup 或  disown 如果你要让某个进程运行在后台。</p>
+</li>
+<li><p>使用 netstat -lntp 来看看有侦听在网络某端口的进程。当然，也可以使用 lsof。</p>
+</li>
+<li><p>在 bash 的脚本中，你可以使用 set -x 来 debug 输出。使用 set -e 来当有错误发生的时候 abort 执行。考虑使用 set -o pipefail 来限制错误。还可以使用 trap 来截获信号（如截获 ctrl+c）。</p>
+</li>
+<li><p>在 bash 脚本中，subshells (写在圆括号里的) 是一个很方便的方式来组合一些命令。一个常用的例子是临时地到另一个目录中，例如：</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># do something in current dir</span></span><br><span class="line">(<span class="built_in">cd</span> /some/other/dir; other-command)</span><br><span class="line"><span class="comment"># continue in original dir</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在 bash 中，注意那里有很多的变量展开。如：检查一个变量是否存在: ${name:?error message}。如果一个 bash 的脚本需要一个参数，也许就是这样一个表达式 input_file=${1:?usage: $0 input_file}。一个计算表达式： i=$(( (i + 1) % 5 ))。一个序列： {1..10}。 截断一个字符串： ${var%suffix} 和 ${var#prefix}。 示例： if var=foo.pdf, then echo ${var%.pdf}.txt prints “foo.txt”.</p>
+</li>
+<li><p>通过 &lt;(some command) 可以把某命令当成一个文件。示例：比较一个本地文件和远程文件 /etc/hosts： diff /etc/hosts &lt;(ssh somehost cat /etc/hosts)</p>
+</li>
+<li><p>了解什么叫 “<a href="http://zh.wikipedia.org/wiki/Here%E6%96%87%E6%A1%A3" target="_blank" rel="noopener">here documents</a>” ，就是诸如 cat &lt;&lt;EOF 这样的东西。</p>
+</li>
+<li><p>在 bash 中，使用重定向到标准输出和标准错误。如： some-command &gt;logfile 2&gt;&amp;1。另外，要确认某命令没有把某个打开了的文件句柄重定向给标准输入，最佳实践是加上 “&lt;/dev/null”，把 / dev/null 重定向到标准输入。</p>
+</li>
+<li><p>使用 man ascii 来查看 ASCII 表。</p>
+</li>
+<li><p>在远端的 ssh 会话里，使用 screen 或 dtach 来保存你的会话。（参看《<a href="https://coolshell.cn/articles/7829.html" title="28个Unix/Linux的命令行神器" target="_blank" rel="noopener">28 个 Unix/Linux 的命令行神器</a>》）</p>
+</li>
+<li><p>要来 debug Web，试试 curl 和 curl -I 或是 wget 。我觉得 debug Web 的利器是 firebug，curl 和 wget 是用来抓网页的，呵呵。</p>
+</li>
+<li><p>把 HTML 转成文本： lynx -dump -stdin</p>
+</li>
+<li><p>如果你要处理 XML，使用 xmlstarlet</p>
+</li>
+<li><p>对于 Amazon S3， s3cmd 是一个很方便的命令（还有点不成熟）</p>
+</li>
+<li><p>在 ssh 中，知道怎么来使用 ssh 隧道。通过 -L or -D (还有 - R) ，翻墙神器。</p>
+</li>
+<li><p>你还可以对你的 ssh 做点优化。比如，.ssh/config 包含着一些配置：避免链接被丢弃，链接新的 host 时不需要确认，转发认证，以前使用压缩（如果你要使用 scp 传文件）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TCPKeepAlive=yes</span><br><span class="line">ServerAliveInterval=15</span><br><span class="line">ServerAliveCountMax=6</span><br><span class="line">StrictHostKeyChecking=no</span><br><span class="line">Compression=yes</span><br><span class="line">ForwardAgent=yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果你有输了个命令行，但是你改变注意了，但你又不想删除它，因为你要在历史命令中找到它，但你也不想执行它。那么，你可以按下 Alt-# ，于是这个命令关就被加了一个 #字符，于是就被注释掉了。</p>
+</li>
+</ul>
+<h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><ul>
+<li><p>了解 sort 和 uniq 命令 (包括 uniq 的 -u 和 -d 选项).</p>
+</li>
+<li><p>了解用 cut, paste, 和 join 命令来操作文本文件。很多人忘了在 cut 前使用 join。</p>
+</li>
+<li><p>如果你知道怎么用 sort/uniq 来做集合交集、并集、差集能很大地促进你的工作效率。假设有两个文本文件 a 和 b 已解被 uniq 了，那么，用 sort/uniq 会是最快的方式，无论这两个文件有多大（sort 不会被内存所限，你甚至可以使用 - T 选项，如果你的 / tmp 目录很小）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat a b | sort | uniq &gt; c   <span class="comment"># c is a union b 并集</span></span><br><span class="line"> </span><br><span class="line">cat a b | sort | uniq -d &gt; c   <span class="comment"># c is a intersect b 交集</span></span><br><span class="line"> </span><br><span class="line">cat a b b | sort | uniq -u &gt; c   <span class="comment"># c is set difference a - b 差集</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>了解和字符集相关的命令行工具，包括排序和性能。很多的 Linux 安装程序都会设置 LANG 或是其它和字符集相关的环境变量。这些东西可能会让一些命令（如：sort）的执行性能慢 N 多倍（注：就算是你用 UTF-8 编码文本文件，你也可以很安全地使用 ASCII 来对其排序）。如果你想 Disable 那个 i18n 并使用传统的基于 byte 的排序方法，那就设置 export LC_ALL=C （实际上，你可以把其放在 .bashrc）。如果这设置这个变量，你的 sort 命令很有可能会是错的。</p>
+</li>
+<li><p>了解 awk 和 sed，并用他们来做一些简单的数据修改操作。例如：求第三列的数字之和： awk ‘{x += $3} END { print x }’。这可能会比 Python 快 3 倍，并比 Python 的代码少三倍。</p>
+</li>
+<li><p>使用 shuf 来打乱一个文件中的行或是选择文件中一个随机的行。</p>
+</li>
+<li><p>了解 sort 命令的选项。了解 key 是什么（-t 和 - k）。具体说来，你可以使用 - k1,1 来对第一列排序，-k1 来对全行排序。</p>
+</li>
+<li><p>Stable sort (sort -s) 会很有用。例如：如果你要想对两例排序，先是以第二列，然后再以第一列，那么你可以这样： sort -k1,1 | sort -s -k2,2</p>
+</li>
+<li><p>我们知道，在 bash 命令行下，Tab 键是用来做目录文件自动完成的事的。但是如果你想输入一个 Tab 字符（比如：你想在 sort -t 选项后输入 <tab> 字符），你可以先按 Ctrl-V，然后再按 Tab 键，就可以输入 &lt; tab &gt; 字符了。当然，你也可以使用 $’\t’。</tab></p>
+</li>
+<li><p>如果你想查看二进制文件，你可以使用 hd 命令（在 CentOS 下是 hexdump 命令），如果你想编译二进制文件，你可以使用 bvi 命令（<a href="http://bvi.sourceforge.net/" target="_blank" rel="noopener">http://bvi.sourceforge.net/</a> 墙）</p>
+</li>
+<li><p>另外，对于二进制文件，你可以使用 strings（配合 grep 等）来查看二进制中的文本。</p>
+</li>
+<li><p>对于文本文件转码，你可以试一下 iconv。或是试试更强的 uconv 命令（这个命令支持更高级的 Unicode 编码）</p>
+</li>
+<li><p>如果你要分隔一个大文件，你可以使用 split 命令（split by size）和 csplit 命令（split by a pattern）。</p>
+</li>
+</ul>
+<h4 id="系统调试"><a href="#系统调试" class="headerlink" title="系统调试"></a>系统调试</h4><ul>
+<li><p>如果你想知道磁盘、CPU、或网络状态，你可以使用 iostat, netstat, top (或更好的 htop), 还有 dstat 命令。你可以很快地知道你的系统发生了什么事。关于这方面的命令，还有 iftop, iotop 等（参看《<a href="https://coolshell.cn/articles/7829.html" title="28个Unix/Linux的命令行神器" target="_blank" rel="noopener">28 个 Unix/Linux 的命令行神器</a>》）</p>
+</li>
+<li><p>要了解内存的状态，你可以使用 free 和 vmstat 命令。具体来说，你需要注意 “cached” 的值，这个值是 Linux 内核占用的内存。还有 free 的值。</p>
+</li>
+<li><p>Java 系统监控有一个小的技巧是，你可以使用 kill -3 <pid> 发一个 SIGQUIT 的信号给 JVM，可以把堆栈信息（包括垃圾回收的信息）dump 到 stderr/logs。</pid></p>
+</li>
+<li><p>使用 mtr 会比使用 traceroute 要更容易定位一个网络问题。</p>
+</li>
+<li><p>如果你要找到哪个 socket 或进程在使用网络带宽，你可以使用 iftop 或 nethogs。</p>
+</li>
+<li><p>Apache 的一个叫 ab 的工具是一个很有用的，用 quick-and-dirty 的方式来测试网站服务器的性能负载的工作。如果你需要更为复杂的测试，你可以试试 siege。</p>
+</li>
+<li><p>如果你要抓网络包的话，试试 wireshark 或 tshark。</p>
+</li>
+<li><p>了解 strace 和 ltrace。这两个命令可以让你查看进程的系统调用，这有助于你分析进程的 hang 在哪了，怎么 crash 和 failed 的。你还可以用其来做性能 profile，使用 -c 选项，你可以使用 - p 选项来 attach 上任意一个进程。</p>
+</li>
+<li><p>了解用 ldd 命令来检查相关的动态链接库。注意：<a href="https://coolshell.cn/articles/1626.html" title="ldd 的一个安全问题" target="_blank" rel="noopener">ldd 的安全问题</a></p>
+</li>
+<li><p>使用 gdb 来调试一个正在运行的进程或分析 core dump 文件。参看耗子叔写的《<a href="https://coolshell.cn/articles/3643.html" title="GDB中应该知道的几个调试方法" target="_blank" rel="noopener">GDB 中应该知道的几个调试方法</a>》</p>
+</li>
+<li><p>学会到 /proc 目录中查看信息。这是一个 Linux 内核运行时记录的整个操作系统的运行统计和信息，比如： /proc/cpuinfo, /proc/xxx/cwd, /proc/xxx/exe, /proc/xxx/fd/, /proc/xxx/smaps.</p>
+</li>
+<li><p>如果你调试某个东西为什么出错时，sar 命令会有用。它可以让你看看 CPU, 内存, 网络, 等的统计信息。</p>
+</li>
+<li><p>使用 dmesg 来查看一些硬件或驱动程序的信息或问题。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Kong Jerry
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://m12r3dx.github.io/2019/03/29/linux/" title="速成课：linux漫游指南">https://m12r3dx.github.io/2019/03/29/linux/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Memo/" rel="tag"># Memo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/28/vscode-cpp-config/" rel="next" title="配置VsCode在Windows下使用C/C++">
+                <i class="fa fa-chevron-left"></i> 配置VsCode在Windows下使用C/C++
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/21/ubuntu-1804/" rel="prev" title="Ubuntu 18.04 部署手记">
+                Ubuntu 18.04 部署手记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Kong Jerry">
+            
+              <p class="site-author-name" itemprop="name">Kong Jerry</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/M12R3DX" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhihu.com/people/jerryko616" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-question-circle"></i>Zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/m12r3dx" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日常"><span class="nav-number">2.</span> <span class="nav-text">日常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据处理"><span class="nav-number">3.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统调试"><span class="nav-number">4.</span> <span class="nav-text">系统调试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kong Jerry</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

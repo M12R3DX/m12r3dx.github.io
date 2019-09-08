@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel="manifest" href="/manifest.json">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SecNote,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="红X菌のZone" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="IDA   按键 作用     Space 切换显示   C 转换为代码   D 转换为数据   A 转换为字符   * 转换为数组   U 未定义   O 提取偏移量   H 立即数-&amp;gt;DEC   R 立即数-&amp;gt;STR   B 立即数-&amp;gt;BIN   Q 立即数-&amp;gt;HEX   N 标签重命名   ? 计算器   G 跳转到地址   : 注释   Ctrl+X 查看参考[显示">
+<meta name="keywords" content="SecNote">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RE速查表">
+<meta property="og:url" content="https://m12r3dx.github.io/2018/06/27/re_cheat/index.html">
+<meta property="og:site_name" content="红X菌のZone">
+<meta property="og:description" content="IDA   按键 作用     Space 切换显示   C 转换为代码   D 转换为数据   A 转换为字符   * 转换为数组   U 未定义   O 提取偏移量   H 立即数-&amp;gt;DEC   R 立即数-&amp;gt;STR   B 立即数-&amp;gt;BIN   Q 立即数-&amp;gt;HEX   N 标签重命名   ? 计算器   G 跳转到地址   : 注释   Ctrl+X 查看参考[显示">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-17T09:24:42.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RE速查表">
+<meta name="twitter:description" content="IDA   按键 作用     Space 切换显示   C 转换为代码   D 转换为数据   A 转换为字符   * 转换为数组   U 未定义   O 提取偏移量   H 立即数-&amp;gt;DEC   R 立即数-&amp;gt;STR   B 立即数-&amp;gt;BIN   Q 立即数-&amp;gt;HEX   N 标签重命名   ? 计算器   G 跳转到地址   : 注释   Ctrl+X 查看参考[显示">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://m12r3dx.github.io/2018/06/27/re_cheat/">
+
+
+
+
+
+  <title>RE速查表 | 红X菌のZone</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红X菌のZone</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://m12r3dx.github.io/2018/06/27/re_cheat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kong Jerry">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红X菌のZone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RE速查表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T01:27:22+08:00">
+                27/06/2018
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">按键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Space</td>
+<td>切换显示</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td>转换为代码</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td>转换为数据</td>
+</tr>
+<tr>
+<td style="text-align:left">A</td>
+<td>转换为字符</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td>转换为数组</td>
+</tr>
+<tr>
+<td style="text-align:left">U</td>
+<td>未定义</td>
+</tr>
+<tr>
+<td style="text-align:left">O</td>
+<td>提取偏移量</td>
+</tr>
+<tr>
+<td style="text-align:left">H</td>
+<td>立即数-&gt;DEC</td>
+</tr>
+<tr>
+<td style="text-align:left">R</td>
+<td>立即数-&gt;STR</td>
+</tr>
+<tr>
+<td style="text-align:left">B</td>
+<td>立即数-&gt;BIN</td>
+</tr>
+<tr>
+<td style="text-align:left">Q</td>
+<td>立即数-&gt;HEX</td>
+</tr>
+<tr>
+<td style="text-align:left">N</td>
+<td>标签重命名</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td>计算器</td>
+</tr>
+<tr>
+<td style="text-align:left">G</td>
+<td>跳转到地址</td>
+</tr>
+<tr>
+<td style="text-align:left">:</td>
+<td>注释</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+X</td>
+<td>查看参考[显示栈]</td>
+</tr>
+<tr>
+<td style="text-align:left">X</td>
+<td>查看参考</td>
+</tr>
+<tr>
+<td style="text-align:left">Art+I</td>
+<td>搜索常量</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+I</td>
+<td>再次搜索常量</td>
+</tr>
+<tr>
+<td style="text-align:left">Art+B</td>
+<td>搜索Byte</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+B</td>
+<td>再次搜索Byte</td>
+</tr>
+<tr>
+<td style="text-align:left">Art+T</td>
+<td>搜索文本</td>
+</tr>
+<tr>
+<td style="text-align:left">Ctrl+T</td>
+<td>搜索下一个</td>
+</tr>
+<tr>
+<td style="text-align:left">Art+P</td>
+<td>编辑当前函数</td>
+</tr>
+<tr>
+<td style="text-align:left">Enter</td>
+<td>跳转</td>
+</tr>
+<tr>
+<td style="text-align:left">Esc</td>
+<td>返回</td>
+</tr>
+<tr>
+<td style="text-align:left">NUM -</td>
+<td>收缩</td>
+</tr>
+<tr>
+<td style="text-align:left">NUM +</td>
+<td>展开</td>
+</tr>
+<tr>
+<td style="text-align:left">F5</td>
+<td>以伪代码模式显示</td>
+</tr>
+</tbody>
+</table>
+<h3 id="OllyDBG"><a href="#OllyDBG" class="headerlink" title="OllyDBG"></a>OllyDBG</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F7</td>
+<td>单步进入</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>单步步过</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>执行至点</td>
+</tr>
+<tr>
+<td>Ctrl+F2</td>
+<td>重载程序</td>
+</tr>
+</tbody>
+</table>
+<h3 id="MSVC"><a href="#MSVC" class="headerlink" title="MSVC"></a>MSVC</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/O1</td>
+<td>创建尺寸最小文件</td>
+</tr>
+<tr>
+<td>/Ob0</td>
+<td>禁止内敛展开</td>
+</tr>
+<tr>
+<td>/Ox</td>
+<td>启用内存优化</td>
+</tr>
+<tr>
+<td>/GS-</td>
+<td>禁用安全检查</td>
+</tr>
+<tr>
+<td>/Fa(file)</td>
+<td>创建汇编文件</td>
+</tr>
+<tr>
+<td>/Zi</td>
+<td>生成调试信息</td>
+</tr>
+<tr>
+<td>/Zp(n)</td>
+<td>使封装结构体向n字节边界对齐</td>
+</tr>
+<tr>
+<td>/MD</td>
+<td>使可执行文件使用MSVCR*.DLL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-Os</td>
+<td>优化目标文件大小</td>
+</tr>
+<tr>
+<td>-O3</td>
+<td>打开所有-O2的优化选项</td>
+</tr>
+<tr>
+<td>-regparm=</td>
+<td>设定传参的寄存器数量</td>
+</tr>
+<tr>
+<td>-o file</td>
+<td>制定输出文件名</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>产生有调试信息的代码</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>仅编译到汇编指令，不进行汇编和链接</td>
+</tr>
+<tr>
+<td>-masm=intel</td>
+<td>汇编指令使用intel语法</td>
+</tr>
+<tr>
+<td>-fno-inline</td>
+<td>禁止内联函数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>break filename.c:num</td>
+<td>在源程序第几行设置断点</td>
+</tr>
+<tr>
+<td>break function</td>
+<td>函数入口设置断点</td>
+</tr>
+<tr>
+<td>break *address</td>
+<td>某地址断点</td>
+</tr>
+<tr>
+<td>b</td>
+<td>同break</td>
+</tr>
+<tr>
+<td>p variable</td>
+<td>显示变量的值</td>
+</tr>
+<tr>
+<td>run/r</td>
+<td>运行</td>
+</tr>
+<tr>
+<td>cont</td>
+<td>继续运行</td>
+</tr>
+<tr>
+<td>c</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>bt</td>
+<td>打印当前栈所有信息</td>
+</tr>
+<tr>
+<td>set disassembly-flavor intel</td>
+<td>英特尔语法</td>
+</tr>
+<tr>
+<td>disas</td>
+<td>查看当前函数汇编指令</td>
+</tr>
+<tr>
+<td>disas function</td>
+<td>查看函数汇编指令</td>
+</tr>
+<tr>
+<td>disas function,+50</td>
+<td>查看函数的部分汇编指令</td>
+</tr>
+<tr>
+<td>disas $eip,+0x10</td>
+<td>查看函数的几条汇编指令</td>
+</tr>
+<tr>
+<td>disas/r</td>
+<td>查看接下来的几条</td>
+</tr>
+<tr>
+<td>info registers</td>
+<td>查看opcode</td>
+</tr>
+<tr>
+<td>info float</td>
+<td>查看CPU</td>
+</tr>
+<tr>
+<td>info locals</td>
+<td>查看FPU</td>
+</tr>
+<tr>
+<td>x/w …</td>
+<td>列出全局变量</td>
+</tr>
+<tr>
+<td>x/w $rdi…</td>
+<td>读内存，word型</td>
+</tr>
+<tr>
+<td>x/10w…</td>
+<td>从RDI指定地址读数，word型</td>
+</tr>
+<tr>
+<td>x/s…</td>
+<td>读取并显示为10个word型</td>
+</tr>
+<tr>
+<td>x/i…</td>
+<td>读取内存，并显示为字符串</td>
+</tr>
+<tr>
+<td>x/10c…</td>
+<td>~，并显示为汇编</td>
+</tr>
+<tr>
+<td>x/b…</td>
+<td>~，并显示10个字符</td>
+</tr>
+<tr>
+<td>x/h…</td>
+<td>~，并显示为byte</td>
+</tr>
+<tr>
+<td>x/g…</td>
+<td>读取并显示16位halfword型数据</td>
+</tr>
+<tr>
+<td>finish</td>
+<td>读取并显示giant words(64 bits)</td>
+</tr>
+<tr>
+<td>next</td>
+<td>执行到函数退出</td>
+</tr>
+<tr>
+<td>step</td>
+<td>单步语句(不步入)</td>
+</tr>
+<tr>
+<td>set step-mode on</td>
+<td>单步步入跟踪调试</td>
+</tr>
+<tr>
+<td>frame n</td>
+<td>打开step-mode</td>
+</tr>
+<tr>
+<td>info break</td>
+<td>切换栈帧</td>
+</tr>
+<tr>
+<td>del n</td>
+<td>查看断点</td>
+</tr>
+<tr>
+<td>set args…</td>
+<td>删除断点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="PEDA"><a href="#PEDA" class="headerlink" title="PEDA"></a>PEDA</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aslr</td>
+<td>显示/设定GDB的ASLR(地址空间配置随机加载)</td>
+</tr>
+<tr>
+<td>checksec</td>
+<td>[!]检查二进制文件的各种安全选项</td>
+</tr>
+<tr>
+<td>dumpargs</td>
+<td>函数将要被调用时，显示将要被传入函数的所有参数(默认会在反汇编代码下方自动显示)</td>
+</tr>
+<tr>
+<td>dumprop</td>
+<td>在给定内存范围中Dump出所有ROP gadgets</td>
+</tr>
+<tr>
+<td>elfsymbol</td>
+<td>获取elf的plt表</td>
+</tr>
+<tr>
+<td>elfheader</td>
+<td>获得调试的elf的头信息</td>
+</tr>
+<tr>
+<td>lookup</td>
+<td>搜索内存区间内的地址</td>
+</tr>
+<tr>
+<td>patch</td>
+<td>[!]从地址[str/hex/int]开始修补内存</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>生成字符串模板(create size生成/offset value定位)</td>
+</tr>
+<tr>
+<td>ropgadget</td>
+<td>[!]获取ROP gadgets</td>
+</tr>
+<tr>
+<td>searchmem</td>
+<td>内存中查找，支持正则</td>
+</tr>
+<tr>
+<td>shellcode</td>
+<td>生成shellcode</td>
+</tr>
+<tr>
+<td>skeleton</td>
+<td>生成python exp模板</td>
+</tr>
+<tr>
+<td>readelf</td>
+<td>获取elf文件头</td>
+</tr>
+<tr>
+<td>procinfo</td>
+<td>/proc/pid list</td>
+</tr>
+<tr>
+<td>vmmap</td>
+<td>[!]可以用来查看栈、bss段是否可以执行</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Kong Jerry
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://m12r3dx.github.io/2018/06/27/re_cheat/" title="RE速查表">https://m12r3dx.github.io/2018/06/27/re_cheat/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SecNote/" rel="tag"># SecNote</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/27/List/" rel="next" title="资源整理">
+                <i class="fa fa-chevron-left"></i> 资源整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/04/truth/" rel="prev" title="聊聊真实">
+                聊聊真实 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Kong Jerry">
+            
+              <p class="site-author-name" itemprop="name">Kong Jerry</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/M12R3DX" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhihu.com/people/jerryko616" target="_blank" title="Zhihu">
+                      
+                        <i class="fa fa-fw fa-question-circle"></i>Zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/m12r3dx" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#IDA"><span class="nav-number">1.</span> <span class="nav-text">IDA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OllyDBG"><span class="nav-number">2.</span> <span class="nav-text">OllyDBG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MSVC"><span class="nav-number">3.</span> <span class="nav-text">MSVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCC"><span class="nav-number">4.</span> <span class="nav-text">GCC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GDB"><span class="nav-number">5.</span> <span class="nav-text">GDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PEDA"><span class="nav-number">6.</span> <span class="nav-text">PEDA</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kong Jerry</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
